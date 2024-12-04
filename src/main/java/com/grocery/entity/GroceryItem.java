@@ -12,4 +12,7 @@ public class GroceryItem {
     private String name;
     private double price;
     private int quantity;
+    @ManyToOne
+    private User user;
 }
+

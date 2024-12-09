@@ -3,12 +3,10 @@ package com.grocery.serviceImpl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authorization.AuthenticatedAuthorizationManager;
-import org.springframework.security.core.AuthenticatedPrincipal;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider;
-import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
+
 import org.springframework.stereotype.Service;
 
 
@@ -19,9 +17,9 @@ import com.grocery.repository.UserRepository;
 import com.grocery.responsebean.GroceryItemResponseBean;
 import com.grocery.responsebean.GroceryItemsResponseBean;
 import com.grocery.service.GroceryService;
-import com.grocery.serviceImpl.CustomUserDetailsServiceImpl;
 
-import java.security.Principal;
+
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +30,7 @@ public class GroceryServiceImpl implements GroceryService {
     private GroceryItemRepository repository;
     
     @Autowired
-    private CustomUserDetailsServiceImpl custom;
+    private CustomUserDetailsService custom;
     
     @Autowired
     private UserRepository userRepository;

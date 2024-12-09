@@ -10,14 +10,14 @@ import com.grocery.repository.UserRepository;
 
 
 @Service
-public class CustomUserDetailsServiceImpl implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
     
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username).get();
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email).get();
 //                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }

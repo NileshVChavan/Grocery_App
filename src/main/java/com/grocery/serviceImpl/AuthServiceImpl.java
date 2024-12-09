@@ -35,7 +35,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     public  JwtResponse login(LoginRequest request)  {
-       User user = (userRepository.findByUsername(request.getUsername())).get();
+       User user = (userRepository.findByEmail(request.getEmail())).get();
        if(user ==null) {
          throw new UsernameNotFoundException("User not found");
        }

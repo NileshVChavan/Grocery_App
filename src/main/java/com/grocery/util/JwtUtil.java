@@ -32,7 +32,7 @@ public class JwtUtil {
  
     public String generateToken(User user) {
         return Jwts.builder()
-                .setSubject(user.getUsername()) 
+                .setSubject(user.getEmail()) 
                 .claim("role", user.getRole()) 
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expirationMs)) 
@@ -49,6 +49,23 @@ public class JwtUtil {
                 .getBody()
                 .getSubject();
     }
+    
+    
+//    public String extractUsername(String token) {
+//        Claims claims = Jwts.parserBuilder()
+//                            .setSigningKey(key)
+//                            .build()
+//                            .parseClaimsJws(token)
+//                            .getBody();
+//        String username = claims.getSubject();
+//        String role = claims.get("role", String.class); // Optional, if role is needed
+//        
+//        // Use the role or any other claim if necessary
+//        System.out.println("Role: " + role);
+//
+//        return username;
+//    }
+
 
     public boolean validateToken(String token) {
         try {

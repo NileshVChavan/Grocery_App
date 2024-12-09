@@ -23,7 +23,7 @@ public class AdminController {
     private GroceryService groceryService;
 
     @PostMapping("/grocery-items")
-   @PreAuthorize("hasRole('ROLE_ADMIN')")
+//   @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<GroceryItemResponseBean> addItem(@RequestBody List<GroceryItem> item) {
         return ResponseEntity.ok(groceryService.addGroceryItem(item));
     }

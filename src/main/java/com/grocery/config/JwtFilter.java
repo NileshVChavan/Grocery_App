@@ -16,7 +16,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import com.grocery.serviceImpl.CustomUserDetailsServiceImpl;
+import com.grocery.serviceImpl.CustomUserDetailsService;
 import com.grocery.util.JwtUtil;
 @Component
 public class JwtFilter extends OncePerRequestFilter {
@@ -25,7 +25,7 @@ public class JwtFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private CustomUserDetailsServiceImpl userDetailsService;
+    private CustomUserDetailsService userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)

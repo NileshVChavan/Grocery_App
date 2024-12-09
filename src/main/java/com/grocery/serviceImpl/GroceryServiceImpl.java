@@ -83,7 +83,7 @@ public class GroceryServiceImpl implements GroceryService {
     	bean.setStatus(true);
     	}
     	else {
-    		bean.setMsg("wrong id");
+    		bean.setMsg("id not found");
         	bean.setStatus(false);
     	}
         return bean;

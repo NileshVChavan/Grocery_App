@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import com.grocery.entity.GroceryItem;
 import com.grocery.entity.Order;
+import com.grocery.responsebean.GroceryItemsResponseBean;
 import com.grocery.service.GroceryService;
-import com.grocery.service.OrderService;
+import com.grocery.serviceImpl.GroceryServiceImpl;
+import com.grocery.serviceImpl.OrderServiceImpl;
 
 import java.util.List;
 
@@ -21,10 +23,10 @@ public class UserController {
     private GroceryService groceryService;
 
     @Autowired
-    private OrderService orderService;
+    private OrderServiceImpl orderService;
 
     @GetMapping("/grocery-items")
-    public ResponseEntity<List<GroceryItem>> getAvailableItems() {
+    public ResponseEntity<GroceryItemsResponseBean> getAvailableItems() {
         return ResponseEntity.ok(groceryService.getAllGroceryItems());
     }
 

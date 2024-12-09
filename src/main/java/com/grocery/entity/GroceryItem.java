@@ -1,11 +1,13 @@
 package com.grocery.entity;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity
-public class GroceryItem {
+public class GroceryItem  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -8,7 +8,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.grocery.entity.GroceryItem;
+import com.grocery.responsebean.GroceryItemResponseBean;
+import com.grocery.responsebean.GroceryItemsResponseBean;
 import com.grocery.service.GroceryService;
+import com.grocery.serviceImpl.GroceryServiceImpl;
 
 import java.util.List;
 
@@ -20,18 +23,18 @@ public class AdminController {
     private GroceryService groceryService;
 
     @PostMapping("/grocery-items")
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<List<GroceryItem>> addItem(@RequestBody List<GroceryItem> item) {
+   @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ResponseEntity<GroceryItemResponseBean> addItem(@RequestBody List<GroceryItem> item) {
         return ResponseEntity.ok(groceryService.addGroceryItem(item));
     }
 
     @GetMapping("/grocery-items")
-    public ResponseEntity<List<GroceryItem>> getAllItems() {
+    public ResponseEntity<GroceryItemsResponseBean> getAllItems() {
         return ResponseEntity.ok(groceryService.getAllGroceryItems());
     }
 
     @DeleteMapping("/grocery-items/{id}")
-    public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
+    public ResponseEntity<GroceryItemResponseBean> deleteItem(@PathVariable Long id) {
         groceryService.deleteGroceryItem(id);
         return ResponseEntity.noContent().build();
     }

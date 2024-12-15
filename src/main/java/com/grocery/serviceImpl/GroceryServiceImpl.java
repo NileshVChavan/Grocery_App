@@ -4,6 +4,7 @@ package com.grocery.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,11 +19,12 @@ import com.grocery.responsebean.GroceryItemResponseBean;
 import com.grocery.responsebean.GroceryItemsResponseBean;
 import com.grocery.service.GroceryService;
 
-
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+@Slf4j
 @Service
 public class GroceryServiceImpl implements GroceryService {
 
@@ -36,6 +38,7 @@ public class GroceryServiceImpl implements GroceryService {
     private UserRepository userRepository;
 
     public GroceryItemResponseBean addGroceryItem(List<GroceryItem> item) {
+    	log.info("entered into addGroceryItem method of GroceryServiceImpl class");
     	GroceryItemResponseBean groceryItemResponseBean=new GroceryItemResponseBean();
     	 Optional<User> user1 = null;
          Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -62,6 +65,7 @@ public class GroceryServiceImpl implements GroceryService {
     }
 
     public GroceryItemsResponseBean getAllGroceryItems() {
+    	log.info("entered into getAllGroceryItems method of GroceryServiceImpl class");
     	GroceryItemsResponseBean bean=new GroceryItemsResponseBean();
         List<GroceryItem> item= repository.findAll();
         if(item!=null) {
@@ -76,6 +80,7 @@ public class GroceryServiceImpl implements GroceryService {
     }
 
     public GroceryItemResponseBean deleteGroceryItem(Long id) {
+    	log.info("entered into deleteGroceryItem method of GroceryServiceImpl class");
     	GroceryItemResponseBean bean=new GroceryItemResponseBean();
     	if(repository.findById(id).equals(id)) {
         repository.deleteById(id);
@@ -90,6 +95,7 @@ public class GroceryServiceImpl implements GroceryService {
     }
 
     public GroceryItem updateGroceryItem(Long id, GroceryItem item) {
+    	log.info("entered into pdateGroceryItem method of GroceryServiceImpl class");
         return repository.findById(id).map(existing -> {
             existing.setName(item.getName());
             existing.setPrice(item.getPrice());

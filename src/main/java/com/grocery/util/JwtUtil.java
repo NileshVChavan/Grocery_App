@@ -4,6 +4,8 @@ package com.grocery.util;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.stereotype.Component;
 
 import com.grocery.entity.User;
@@ -11,7 +13,7 @@ import com.grocery.entity.User;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
-
+@Slf4j
 @Component
 public class JwtUtil {
 
@@ -21,6 +23,7 @@ public class JwtUtil {
     private final long expirationMs = 86400000; // 24 hours
 
     public String generateToken(String user) {
+    	log.info("entered into generateToken method of JwtUtil class");
         return Jwts.builder()
                 .setSubject(user)
                 .setIssuedAt(new Date())
@@ -31,6 +34,7 @@ public class JwtUtil {
 
  
     public String generateToken(User user) {
+    	log.info("entered into generateToken method of JwtUtil class");
         return Jwts.builder()
                 .setSubject(user.getEmail()) 
                 .claim("role", user.getRole()) 
@@ -42,6 +46,7 @@ public class JwtUtil {
 
 
     public String extractUsername(String token) {
+    	log.info("entered into extractUsername method of JwtUtil class");
         return Jwts.parserBuilder()
                 .setSigningKey(key) 
                 .build()
@@ -58,9 +63,9 @@ public class JwtUtil {
 //                            .parseClaimsJws(token)
 //                            .getBody();
 //        String username = claims.getSubject();
-//        String role = claims.get("role", String.class); // Optional, if role is needed
+//        String role = claims.get("role", String.class); 
 //        
-//        // Use the role or any other claim if necessary
+//        
 //        System.out.println("Role: " + role);
 //
 //        return username;
@@ -68,6 +73,7 @@ public class JwtUtil {
 
 
     public boolean validateToken(String token) {
+    	log.info("entered into validateToken method of JwtUtil class");
         try {
             Jwts.parserBuilder()
                     .setSigningKey(key) 

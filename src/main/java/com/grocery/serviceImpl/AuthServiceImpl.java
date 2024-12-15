@@ -12,8 +12,10 @@ import com.grocery.repository.UserRepository;
 import com.grocery.service.AuthService;
 import com.grocery.util.JwtUtil;
 
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+@Slf4j
 @Service
 public class AuthServiceImpl implements AuthService {
     @Autowired
@@ -26,6 +28,7 @@ public class AuthServiceImpl implements AuthService {
     private JwtUtil jwtTokenUtil;
 
     public String register(RegisterRequest request) {
+    	log.info("entered into register method of AuthServiceImpl class");
         User user = new User();
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -35,6 +38,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     public  JwtResponse login(LoginRequest request)  {
+    	log.info("entered into login method of AuthServiceImpl class");
        User user = (userRepository.findByEmail(request.getEmail())).get();
        if(user ==null) {
          throw new UsernameNotFoundException("User not found");

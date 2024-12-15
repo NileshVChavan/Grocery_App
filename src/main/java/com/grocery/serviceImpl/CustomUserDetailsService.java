@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.grocery.repository.UserRepository;
 
+import lombok.extern.slf4j.Slf4j;
 
 
+@Slf4j
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
@@ -17,6 +19,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    	log.info("entered into loadUserByUsername method of CustomUserDetailsService class");
         return userRepository.findByEmail(email).get();
 //                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }

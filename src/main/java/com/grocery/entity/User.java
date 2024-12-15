@@ -30,11 +30,11 @@ public class User implements UserDetails {
     private String password;
 
     @Column(nullable = false)
-    private String role; // ADMIN or USER
+    private String role; 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + this.role)); // Returns the user's role
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + this.role)); 
     }
 
     @Override

@@ -12,9 +12,11 @@ import com.grocery.dto.LoginRequest;
 import com.grocery.dto.RegisterRequest;
 import com.grocery.service.AuthService;
 
+import lombok.extern.slf4j.Slf4j;
 
 
 
+@Slf4j
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -23,11 +25,13 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
+    	log.info("entered into register method of AuthController class");
         return ResponseEntity.ok(authService.register(request));
     }
 
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@RequestBody LoginRequest request) {
+    	log.info("entered into login method of AuthController class");
         return ResponseEntity.ok(authService.login(request));
     }
 }

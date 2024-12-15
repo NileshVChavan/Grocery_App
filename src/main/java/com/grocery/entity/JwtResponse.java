@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 public class JwtResponse {
 
     private String token;
-    private String type = "Bearer";  // Typically "Bearer" for JWT tokens
+    private String type = "Bearer";  
     private String username;
    
-    private String role; // User roles (optional)
+    private String role; 
 
 	public JwtResponse(String token, String string, String string2) {
 		super();

@@ -13,8 +13,10 @@ import com.grocery.service.GroceryService;
 import com.grocery.serviceImpl.GroceryServiceImpl;
 import com.grocery.serviceImpl.OrderServiceImpl;
 
-import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+@Slf4j
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -27,11 +29,13 @@ public class UserController {
 
     @GetMapping("/grocery-items")
     public ResponseEntity<GroceryItemsResponseBean> getAvailableItems() {
+    	log.info("entered into getAvailbleItems method of UserController class");
         return ResponseEntity.ok(groceryService.getAllGroceryItems());
     }
 
     @PostMapping("/orders")
     public ResponseEntity<Order> placeOrder(@RequestBody Order order) {
+    	log.info("entered into placeOrder method of UserController class");
         return ResponseEntity.ok(orderService.createOrder(order));
     }
 }

@@ -7,10 +7,10 @@ import lombok.Data;
 public class JwtResponse {
 
     private String token;
-    private String type = "Bearer";  // Typically "Bearer" for JWT tokens
+    private String type = "Bearer";  
     private String username;
     private String email;
-    private List<String> roles; // User roles (optional)
+    private List<String> roles; 
 
     public JwtResponse(String token) {
         this.token = token;
